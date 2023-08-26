@@ -7,12 +7,12 @@ export default function Volume() {
 
     const[{token}] = useStateProvider();
     const setVolume = async(e) =>{
-        await axios.put('https://api.spotify.com/v1/me/player/volume', 
+        await axios.put('https://api.spotify.com/v1/me/player/volume',  
         {}, 
            {
 
             params : {
-                volume_percent: parseInt(e.target.value)
+                volume_percent: parseInt(e.target.value) 
             },
             headers: {
               Authorization: 'Bearer ' + token,
