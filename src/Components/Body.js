@@ -88,7 +88,7 @@ export default function Body() {
     }
     );  
     
-    if(response.status ===204){
+   if(response.status === 204){
       const currentTrack = {
         id,
         name,
