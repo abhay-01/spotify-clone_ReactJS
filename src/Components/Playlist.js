@@ -42,7 +42,7 @@ export default function Playlist() {
      <ul>
         {
             playlists.map(({name,id}) =>{
-                return <li key={id} onClick = {()=> selectedPlaylistId(id)}>{name}</li>
+                return <li key={id} onClick = {()=> changePlaylistId(id)}>{name}</li>
             }
             )
 
