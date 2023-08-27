@@ -18,7 +18,9 @@ export default function Login() {
             "user-read-private",
         ];
     
-        const authorizationUrl = `${apiURI}?client_id=${clientId}&redirect_uri=${encodeURIComponent(redirectURI)}&scope=${encodeURIComponent(scopes.join(" "))}&response_type=token`;
+        const authorizationUrl = `${apiURI}?client_id=${clientId}&redirect_uri=${redirectURI}&scope=${scopes.join(
+            " "
+          )}&response_type=token&show_dialog=true`;
     
         // Open the authorization URL in a new window or redirect to it
         // depending on your application's requirements
