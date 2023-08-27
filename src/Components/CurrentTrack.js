@@ -4,7 +4,7 @@ import axios from "axios";
 import { useStateProvider } from "../utils/StateProvider";
 import { reducerCases } from "../utils/Constants";
 export default function CurrentTrack() {
-  const [{ token, currentPlaying }, dispatch] = useStateProvider();
+  const [{ token, currentTrack }, dispatch] = useStateProvider();
   useEffect(() => {
     const getCurrentTrack = async () => {
       const response = await axios.get(
@@ -16,35 +16,42 @@ export default function CurrentTrack() {
           },
         }
       );
+
+      // console.log(response);
+  
       if (response.data !== "") {
-        const currentPlaying = {
-          id: response.data.item.id,
-          name: response.data.item.name,
-          artists: response.data.item.artists.map((artist) => artist.name),
-          image: response.data.item.album.images[2].url,
+        const { item } = response.data;
+        const currentTrack = {
+          id: item.id,
+          name: item.name,
+          artists: item.artists.map((artist) => artist.name),
+          image: item.album.images[2].url,
         };
-        dispatch({ type: reducerCases.SET_PLAYING, currentPlaying });
-      } else {
-        dispatch({ type: reducerCases.SET_PLAYING, currentPlaying: null });
-      }
+        dispatch({ type: reducerCases.SET_PLAYING, currentTrack });
+      }else{
+        dispatch({ type: reducerCases.SET_PLAYING, currentTrack: null });
+      } 
     };
     getCurrentTrack();
   }, [token, dispatch]);
   return (
     <Container>
-      {currentPlaying && (
+      {currentTrack && ( 
         <div className="track">
           <div className="track__image">
-            <img src={currentPlaying.image} alt="currentPlaying" />
+            <img src={currentTrack.image} alt="currentPlaying" />
           </div>
           <div className="track__info">
-            <h4 className="track__info__track__name">{currentPlaying.name}</h4>
+            <h4 className="track__info__track__name">{currentTrack.name}</h4>
             <h6 className="track__info__track__artists">
-              {currentPlaying.artists.join(", ")}
+              {currentTrack.artists.join(", ")}
             </h6>
           </div>
         </div>
       )}
+     
+
+
     </Container>
   );
 }

@@ -28,6 +28,7 @@ export default function Spotify() {
     };
     getUserInfo();
   }, [dispatch, token]);
+  
   useEffect(() => {
     const getPlaybackState = async () => {
       const { data } = await axios.get("https://api.spotify.com/v1/me/player", {

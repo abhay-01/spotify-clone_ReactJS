@@ -52,7 +52,7 @@ export default function Body() {
         })
       }
        
-      console.log(selectedPlaylist);
+      // console.log(selectedPlaylist);
       dispatched({
         type: reducerCases.SET_SELECTED_PLAYLIST, selectedPlaylist
       });

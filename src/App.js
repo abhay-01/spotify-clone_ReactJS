@@ -11,6 +11,7 @@ function App() {
     const hash = window.location.hash;
     if(hash) {
       const token = hash.substring(1).split('&')[0].split('=')[1]; // token is the substring of hash from index 1 to the first occurence of '&' and then split it into an array and then take the first element of the array and then split it into an array and then take the second element of the array
+      // console.log("TOKEN"+token);
       dispatch({
         type: reducerCases.SET_TOKEN, token // dispatch an action to change the state of token
       });

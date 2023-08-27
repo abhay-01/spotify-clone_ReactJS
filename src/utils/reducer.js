@@ -4,7 +4,7 @@ export const initialState = {
     token: null,    // null is the initial value of token
     playlists: [],  // [] is the initial value of playlists
     userInfo: null,      // [] is the initial value of users
-    selectedPlaylistId: '0HtfSDx6znlXtjWUpwLEzL', // null is the initial value of selectedPlaylist
+    selectedPlaylistId: '7yUomznoYxH89bMHpA5xuK', // null is the initial value of selectedPlaylist
     selectedPlaylist: null,
     currentTrack: null,
     playerState: false,
