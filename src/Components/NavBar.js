@@ -6,7 +6,7 @@ import { useStateProvider } from '../utils/StateProvider';
 
 export default function NavBar() {
   const[ {userInfo} ] = useStateProvider();  // userInfo is the current state of userInfo
- console.log({userInfo});
+
   return (
     <Container>  
       <div className='searchBar'>
@@ -15,11 +15,10 @@ export default function NavBar() {
       </div>
 
       <div className = "profile">
-        <a href = "#">
+      <a href={userInfo?.userUrl}>
         <CgProfile className='icon'/> 
         <span>
-          {userInfo?.userName} 
-          
+          {userInfo?.name} 
         </span>
         </a>
       </div>
@@ -68,16 +67,15 @@ position: sticky;
       display:flex;
       align-items: center;
       justify-content: center;
-      gap: 0.5rem;
-      padding: 0.5rem;
+      padding: 0.9rem;
       border-radius: 1rem;
-      margin: 1rem 8rem;
+      margin: 1.6rem 8rem;
       background-color: #282828;
-      width:5vw;
+      width:6vw;
       a{
         text-decoration: none;
         color: white;
-        font-size: 0.84rem;
+        font-size: 1.14rem;
         display: flex;
         align-items: center;
         &:hover{
@@ -86,6 +84,7 @@ position: sticky;
         }
       .icon{
         font-size: 1.8rem;
+        margin-right: 0.3rem;
       }
     }
 

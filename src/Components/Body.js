@@ -52,8 +52,7 @@ export default function Body() {
         })
       }
        
-      // console.log(selectedPlaylist);
-
+      console.log(selectedPlaylist);
       dispatched({
         type: reducerCases.SET_SELECTED_PLAYLIST, selectedPlaylist
       });
@@ -69,45 +68,10 @@ export default function Body() {
     return minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
   }
 
-  
-  const playTrack = async(id,name,artists,image,uri,track_number) =>{
-
-    const response = await axios.put('https://api.spotify.com/v1/me/player/play', 
-    {
-      uri,
-      offset: {
-        position: track_number - 1, 
-      },
-      position_ms: 0,
-    },
-    {
-      headers: {
-        Authorization: 'Bearer ' + token,
-        'Content-Type': 'application/json',
-      },
-    }
-    );  
-    
-   if(response.status === 204){
-      const currentTrack = {
-        id,
-        name,
-        artists,
-        image,
-      
-    };
-    dispatched({
-      type: reducerCases.SET_CURRENT_TRACK, currentTrack // set the currentTrack to the track that is playing
-    })
-    dispatched({ type: reducerCases.SET_PLAYER_STATE, playerState: true }); 
-  }else
-  {
-    dispatched({ type: reducerCases.SET_PLAYER_STATE, playerState: true }); // if the track is already playing then just set the playerState to true
-
-  };
   return (
     <Container>
       {
+
 
         selectedPlaylist && (  // if selectedPlaylist is not null then render the following code
           <>
@@ -147,7 +111,7 @@ export default function Body() {
    selectedPlaylist.tracks.map(({id,name,artist,duration,image,album,uri,track_number},index) => {
     
     return (
-      <div className='row' key = {id} onClick = {() =>  {playTrack(id,name,artists,image,uri,track_number)}}>
+      <div className='row' key = {id}>
         <div className='col'>
           <span> {index+1}</span>
         </div>
@@ -173,13 +137,13 @@ export default function Body() {
     )
   })}
 </div>
+
           </div>  
           </>
         )
       }
     </Container>
   );
-}
 }
 
 const Container = styled.div`

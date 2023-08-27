@@ -4,7 +4,7 @@ export const initialState = {
     token: null,    // null is the initial value of token
     playlists: [],  // [] is the initial value of playlists
     userInfo: null,      // [] is the initial value of users
-    selectedPlaylistId: '7yUomznoYxH89bMHpA5xuK', // null is the initial value of selectedPlaylist
+    selectedPlaylistId: '0HtfSDx6znlXtjWUpwLEzL', // null is the initial value of selectedPlaylist
     selectedPlaylist: null,
     currentTrack: null,
     playerState: false,
@@ -49,8 +49,6 @@ export const reducer = (state, action) =>{
         };
     }
 
-   
-
     case reducerCases.SET_PLAYER_STATE:{
         return {
             ...state,
@@ -62,9 +60,9 @@ export const reducer = (state, action) =>{
         return {
             ...state,
             selectedPlaylistId: action.selectedPlaylistId,
+
         };
     }
-
 
 
         default:

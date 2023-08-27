@@ -21,6 +21,7 @@ export default function Playlist() {
       const playlists = items.map(({name,id}) =>{ 
             return {name,id}
       });
+      // console.log(playlists);
 
       dispatch({
         type: reducerCases.SET_PLAYLISTS,
@@ -31,18 +32,12 @@ export default function Playlist() {
     getPlaylist();  
   }, [token, dispatch]);
 
-  const changePlaylistId = (selectedPlaylistId) => {
-    dispatch({
-      type: reducerCases.SET_PLAYLIST_ID, selectedPlaylistId
-    })
-  }
-
   return (
     <Container>
      <ul>
         {
             playlists.map(({name,id}) =>{
-                return <li key={id} onClick = {()=> changePlaylistId(id)}>{name}</li>
+                return <li key={id}>{name}</li>
             }
             )
 
@@ -54,6 +49,9 @@ export default function Playlist() {
 }
 
 const Container = styled.div`
+
+height: 100%;
+overflow:hidden;
 ul{
 
     list-style: none;
@@ -61,6 +59,15 @@ ul{
     flex-direction: column;
     gap: 1rem;
     padding: 0.8rem;
+    height: 55vh;
+    max-height: 100%;
+    overflow: auto;
+    &::-webkit-scrollbar{
+        width: 0.5rem;
+        &-thumb{
+          background-color:  rgba(255,255,255,0.6);
+        }
+        }
 
     li{
        cursor: pointer;
