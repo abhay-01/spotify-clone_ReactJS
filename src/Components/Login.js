@@ -5,7 +5,7 @@ export default function Login() {
 
     const handleClick = () => {
         const clientId = "584b7fec849a46ee84cab49ee6af2fde";
-        const redirectURI = "http://https://spotify-react-clone-ui.netlify.app/";
+        const redirectURI = "https://spotify-react-clone-ui.netlify.app/";
         const apiURI = "https://accounts.spotify.com/authorize";
         const scopes = [ 
             "user-read-currently-playing",
